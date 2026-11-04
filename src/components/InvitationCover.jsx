@@ -291,7 +291,7 @@ export default function InvitationCover({ opening, reduced, onOpen }) {
             </motion.p>
 
             <motion.img
-              src={weddingData.couple.monogram}
+              src={`${weddingData.couple.monogram}?v=2`}
               alt={weddingData.couple.monogramAlt}
               className="absolute top-[12%] left-1/2 h-[min(8.5rem,16svh)] w-auto -translate-x-1/2 object-contain [@media(max-height:500px)]:top-[4.25rem] [@media(max-height:500px)]:h-12 lg:top-[15%] lg:h-24"
               initial={quiet ? false : { opacity: 0, scale: 0.88 }}
