@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #102348;
+  --color-navy-soft: #0a1834;
+  --color-ink: #1c2a4a;
+  --color-gold: #c6a15b;
+  --color-gold-bright: #e6cf8e;
+  --color-gold-light: #f3e4bc;
+  --color-gold-deep: #8a6832;
+  --color-ivory: #fbf6ea;
+  --color-ivory-deep: #f4ead6;
+  --color-blush: #f6efe2;
+  --color-leaf: #6e8458;
+  --color-white: #fffdf8;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Great Vibes", cursive;
+  --font-deva: "Noto Serif Devanagari", serif;
+  --font-gurmukhi: "Noto Serif Gurmukhi", "Noto Sans Gurmukhi", serif;
+}
+
+@utility foil {
+  background-image: linear-gradient(180deg, #e8d7a4 0%, #b8924a 52%, #7a5c28 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: #fbf6ea;
+  color: #1c2a4a;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  background: #102348;
+  color: #fbf6ea;
+}
+
+:focus-visible {
+  outline: 2px solid #c6a15b;
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+@keyframes mark-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mark-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(198, 161, 91, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(230, 207, 142, 0.95));
+  }
+}
+
+.mark-glow {
+  animation:
+    mark-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both,
+    mark-glow 2.2s ease-in-out 0.5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .mark-glow {
+    animation: none;
+  }
+}
